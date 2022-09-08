@@ -1,0 +1,22 @@
+.nav {
+  padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2a9d8f;
+  padding: 1em 2em;
+}
+
+.nav__picture {
+  width: 15rem;
+  cursor: pointer;
+}
+
+.nav__links {
+  display: flex;
+  gap: 2em;
+}
+
+.nav__links a {
+  color: #000;
+}

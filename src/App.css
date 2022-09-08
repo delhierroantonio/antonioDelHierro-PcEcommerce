@@ -1,0 +1,39 @@
+/* fotns */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Source+Sans+Pro:wght@300;600&display=swap');
+/*     font-family: 'Raleway', sans-serif;
+
+    font-family: 'Source Sans Pro', sans-serif; */
+
+/* globals */
+*, 
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+ol, ul {
+  list-style-type: none;
+}
+
+a {
+  color: #264653;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  letter-spacing: .12rem;
+}

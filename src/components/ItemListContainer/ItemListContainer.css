@@ -1,0 +1,9 @@
+.itemList-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1em 2em;
+    background-color: #005f73;
+}

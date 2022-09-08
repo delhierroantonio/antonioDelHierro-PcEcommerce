@@ -1,0 +1,10 @@
+.cartwidget {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.cartwidget:hover {
+  transform: scale(1.05);
+}
