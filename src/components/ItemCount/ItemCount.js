@@ -15,7 +15,7 @@ function ItemCount({stock, initial = 1, onAdd}) {
 
     return(
         <div className='item-count-container'>
-            <h1>producto 1</h1>
+            <h1>unidades a comprar</h1>
             <div className='counter-screen'>  
                 <button className='counterButton' disabled={numClicks <= 1} onClick={decrementar}>-</button>
                 <span className='screen'>{numClicks}</span>
