@@ -10,6 +10,7 @@
   text-align: center;
   border-radius: 1rem;
   border: 1px solid rgb(94, 94, 94);
+  cursor: pointer;
 }
 
 .item img {

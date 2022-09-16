@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
+import {useParams} from 'react-router-dom';
 
-function ItemListContainer(props) {
-    // const onAdd = (cantidad) => {
-    //     console.log(`se han comprado ${cantidad} unidades!`);
-    // }
-
-    
+function ItemListContainer() {
+    const {categoryId} = useParams();
+    console.log(categoryId);
     const [productos, setProductos] = useState([]);
     useEffect( () => {
         (async () => {
             try{
-                const response = await fetch("https://fakestoreapi.com/products");
-                const productosApi = await response.json();
-                setProductos(productosApi)
+                if (categoryId) {
+                    const response = await fetch("https://fakestoreapi.com/products/category/" + categoryId );
+                    const productosApi = await response.json();
+                    setProductos(productosApi);
+                }
+                else{
+                    const response = await fetch("https://fakestoreapi.com/products");
+                    const productosApi = await response.json();
+                    setProductos(productosApi);
+                }
             } catch(error) {
                 console.log(error);
             }
         })()
-    }, [])
+    }, [categoryId])
     return(
         <div className='itemList-container'>
             <div>
-                {/* <ItemCount initial={1} stock={5} onAdd={onAdd} /> */}
                 <ItemList items={productos} /> 
             </div>
         </div>
