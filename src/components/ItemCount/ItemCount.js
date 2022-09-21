@@ -13,6 +13,11 @@ function ItemCount({stock, initial = 1, onAdd}) {
             setNumClicks(numClicks - 1);    
     };
 
+    const addCart = () => {
+        onAdd(numClicks);
+        setNumClicks(initial);
+    }
+
     return(
         <div className='item-count-container'>
             <h1>unidades a comprar</h1>
@@ -22,7 +27,8 @@ function ItemCount({stock, initial = 1, onAdd}) {
                 <button className='counterButton' disabled={numClicks >= stock} onClick={incrementar}>+</button>
             </div>
             <div className='counterButton-add'>
-                <button onClick={() => onAdd(numClicks)} disabled={stock <= 0}>agregar al carrito</button>
+                {/* <button onClick={() => onAdd(numClicks)} disabled={stock <= 0}>agregar al carrito</button> */}
+                <button onClick={addCart} disabled={stock <= 0}>agregar al carrito</button>
             </div>
         </div>
     )

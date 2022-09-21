@@ -5,9 +5,12 @@ import '../ItemList/ItemList.css'
 const ItemList = ({items}) => {
   return (
     <div className='itemList'>
-      {items.map(product => {
+      {items.length ? items.map(product => {
       return <Item key={product.id} product={product} /> 
-        })}
+        })
+        :
+        <h2>Loading...</h2>
+        }
     </div>
   )
 }
