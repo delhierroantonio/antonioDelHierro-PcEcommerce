@@ -1,10 +1,9 @@
-import React from 'react';
 import './NavBar.css';
 import brandLogo  from '../../imagenes/softPcLogo.png';
 import CartWidget from '../CartWidget/CartWidget';
 import {Link} from 'react-router-dom';
-
 function NavBar() {
+
     return(
         <nav className='nav'>
             <Link to="/">

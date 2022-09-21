@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Cart } from '../../context/CartContext';
 import ItemCount from '../ItemCount/ItemCount';
 import '../ItemDetail/ItemDetail.css';
 
 const ItemDetail = ({producto}) => {
   const [qty, setQty] = useState(0);
   const navigate = useNavigate();
+  // contexto 
+  const {agregarProducto} = useContext(Cart); 
   // agregar items al carrito
   const addCart = (quantity) => {
     setQty(quantity);
   }
   // finalizar compra
   const buy = () => { 
-    navigate('/cart')
+    navigate('/cart');
+    const productToBuy = {...producto, quantity: qty}
+    agregarProducto(productToBuy)
   }
   console.log(qty);
+
   return (
       <div className='item-container'>
         <div className='item-img'>

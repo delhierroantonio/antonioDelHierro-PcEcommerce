@@ -15,7 +15,7 @@ function ItemCount({stock, initial = 1, onAdd}) {
 
     const addCart = () => {
         onAdd(numClicks);
-        setNumClicks(initial);
+        setNumClicks(initial);  
     }
 
     return(

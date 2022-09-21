@@ -5,9 +5,11 @@ import NavBar from './components/NavBar/NavBar';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import CartContainer from './components/CartContainer/CartContainer';
+import CartContext from './context/CartContext';
 
 function App() {
   return ( 
+    <CartContext>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -18,6 +20,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+    </CartContext>
   );
 }
 
