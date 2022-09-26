@@ -15,11 +15,11 @@ const ItemDetail = ({producto}) => {
   }
   // finalizar compra
   const buy = () => { 
-    navigate('/cart');
     const productToBuy = {...producto, quantity: qty}
     agregarProducto(productToBuy)
+    navigate('/cart'); 
   }
-  console.log(qty);
+  // console.log(qty);
 
   return (
       <div className='item-container'>
@@ -34,7 +34,6 @@ const ItemDetail = ({producto}) => {
             <ItemCount stock={5} initial={1} onAdd={addCart} />
             ):
             <button style={{borderStyle:'none',color:'white',fontSize: '2rem', backgroundColor: 'blue', padding: '1rem 2rem', cursor: 'pointer'}} onClick={buy}>Finalizar Compra!</button> }
-          <a href='/'>Buy-Now</a>
         </div>
       </div>
   )

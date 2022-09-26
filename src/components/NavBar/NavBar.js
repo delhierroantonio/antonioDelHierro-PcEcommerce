@@ -26,7 +26,9 @@ function NavBar() {
                     <Link to="/category/jewelery">Joyeria</Link>
                 </li>
             </ul>
-            <CartWidget />
+            <Link to="/cart">
+                <CartWidget /> 
+            </Link>
         </nav>
     )
 }

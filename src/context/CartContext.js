@@ -24,19 +24,30 @@ const CartContext = ({children}) => {
         return product;
       })
       setCart(cartModificado);
+      console.log(cartModificado);
     }else {
       const carritoActualizado = [...cart, item];
       setCart(carritoActualizado);
     }
   }
-  // eliminar lo que esta en el carrito
-  const clearCart = () => setCart([]);
   // revisar si el producto esta agregado
   const isInCart = (id) => {
     return cart.some(producto => producto.id === id)
   }
+  // eliminar item del carrito
+  const removeItem = (itemToRemove) => {
+    const filteredItems = cart.filter(item => item !== itemToRemove);
+    setCart(filteredItems);
+    console.log(itemToRemove);
+  }
+  // eliminar lo que esta en el carrito
+  const clearCart = () => setCart([]);
+  // mostrar precio total
+  const totalPrice = () => {
+    return cart.reduce((prev, act) => prev + act.quantity * act.price, 0);
+  }
   return (
-    <Cart.Provider value={{cart, agregarProducto, clearCart}}>
+    <Cart.Provider value={{cart, agregarProducto, removeItem, clearCart, totalPrice}}>
       {children}
     </Cart.Provider>
     )
