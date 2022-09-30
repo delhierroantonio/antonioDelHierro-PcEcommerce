@@ -14,13 +14,13 @@ function NavBar() {
                     <Link to="/">Todo</Link>
                 </li>
                 <li>
-                    <Link to="/category/men's clothing">Caballero</Link>
+                    <Link to="/category/gaming">Gaming</Link>
                 </li>
                 <li>
-                    <Link to="/category/women's clothing">Dama</Link>
+                    <Link to="/category/productivity">Productivity</Link>
                 </li>
                 <li>
-                    <Link to="/category/electronics">Tecnologia</Link>
+                    <Link to="/category/bestSellers">Best Sellers</Link>
                 </li>
                 <li>
                     <Link to="/category/jewelery">Joyeria</Link>

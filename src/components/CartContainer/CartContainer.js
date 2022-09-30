@@ -12,8 +12,8 @@ const CartContainer = () => {
           <h3>El carrito esta vacio empieza agregando articulos</h3>
           <Link to='/'>Hacer Compras</Link>
         </div>
-  )
-}
+      )
+  }
 return(
   <div className='cart-table'>
     <table>
