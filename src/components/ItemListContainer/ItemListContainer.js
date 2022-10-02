@@ -7,7 +7,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 
 function ItemListContainer() {
     const {categoryId} = useParams();
-    console.log(db);
+    // console.log(db);
     // console.log(categoryId);
     const [productos, setProductos] = useState([]);
     useEffect( () => {
@@ -30,7 +30,7 @@ function ItemListContainer() {
                     // console.log(doc.id, " => ", doc.data());
                     productsFirebase.push({id: doc.id, ...doc.data()})
                 });
-                console.log(productsFirebase);
+                // console.log(productsFirebase);
                 setProductos(productsFirebase);
                 //     const response = await fetch("https://fakestoreapi.com/products/category/" + categoryId );
                 //     const productosApi = await response.json();

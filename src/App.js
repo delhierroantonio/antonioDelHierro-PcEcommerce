@@ -8,6 +8,9 @@ import CartContainer from './components/CartContainer/CartContainer';
 import CartContext from './context/CartContext';
 
 function App() {
+  // useEffect(() => {
+  //   algoritmoGuardadoAutomatico();
+  // },[])
   return ( 
     <CartContext>
       <BrowserRouter>  

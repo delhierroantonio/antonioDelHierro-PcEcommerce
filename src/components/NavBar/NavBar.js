@@ -22,9 +22,6 @@ function NavBar() {
                 <li>
                     <Link to="/category/bestSellers">Best Sellers</Link>
                 </li>
-                <li>
-                    <Link to="/category/jewelery">Joyeria</Link>
-                </li>
             </ul>
             <Link to="/cart">
                 <CartWidget /> 

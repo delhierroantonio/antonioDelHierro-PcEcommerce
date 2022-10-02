@@ -8,13 +8,13 @@ const Item = ({product}) => {
     navigate(`/detail/${product.id}`);
   }
   return (
-      <div className='item'  onClick={handleNavigate}>
+      <div className='item' onClick={handleNavigate}>
         <img src={product.image} alt='custom pc' />
         <div className='item-content'>
           <h2>{product.title}</h2>
           <p>{product.category}</p>
           <p>${product.price}</p>
-          <a href='/'>Ver detalles</a>
+          <span>Ver detalles</span>
         </div>
       </div>
   )
