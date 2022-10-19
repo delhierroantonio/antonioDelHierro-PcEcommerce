@@ -16,23 +16,17 @@ const ItemDetailContainer = () => {
         const docRef = doc(db, "products", productId);
         // realizamos la peticion a FB
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
           setProductDetail({id: docSnap.id, ...docSnap.data()});
-          console.log("Document data:", docSnap.data());
         } else {
-          // doc.data() will be undefined in this case
           console.log("No such document!");
         }
-      // const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-      // const datos = await res.json();
     } catch (error) {
       console.log(error);         
     }
   }
   getProducts();
   }, [productId])
-  console.log(productDetail);
   return (
     <div className='itemDetail-container'>
       <ItemDetail producto={productDetail} />

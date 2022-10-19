@@ -7,9 +7,7 @@ import '../ItemDetail/ItemDetail.css';
 const ItemDetail = ({producto}) => {
   const [qty, setQty] = useState(0);
   const navigate = useNavigate();
-  // contexto 
   const {agregarProducto} = useContext(Cart); 
-  // agregar items al carrito
   const addCart = (quantity) => {
     setQty(quantity);
   }
@@ -19,7 +17,6 @@ const ItemDetail = ({producto}) => {
     agregarProducto(productToBuy)
     navigate('/cart'); 
   }
-  // console.log(qty);
 
   return (
       <div className='item-container'>

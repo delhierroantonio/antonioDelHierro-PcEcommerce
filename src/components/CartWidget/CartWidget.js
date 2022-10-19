@@ -4,12 +4,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import '../CartWidget/CartWidget.css';
 
 function CartWidget() {
-  const { cart } = useContext(Cart);
-
+  const { totalProducts } = useContext(Cart);
     return(
       <div className='cartWidget-container'>
         <AiOutlineShoppingCart className='cartwidget' />
-        {cart.length > 0 ? cart.length : null}
+        { totalProducts() || '' }
       </div>
     )
 }

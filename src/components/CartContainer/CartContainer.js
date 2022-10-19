@@ -12,33 +12,45 @@ import { db } from '../../firebase/config';
 const CartContainer = () => {
   const { cart, removeItem, clearCart, totalPrice } = useContext(Cart);
   const [loading, setLoading] = useState(false);
-  // generar orden de compra
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [mensaje, setMensaje] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if ([nombre, apellido, email, telefono].includes('') || !Number(telefono)) {
+        setMensaje('Asegurate que todos los campos estan correctos!');
+    } else {
+        setMensaje('');
+        setIsCompleted(true);
+        handleBuy();
+    }
+  };
   const handleBuy = async () => {
-    setLoading(true);
-    const montoTotal = totalPrice();
-    const orden = generarOrden(
-      'antonio',
-      'delhierroantonio@icloud.com',
-      cart,
-      montoTotal
-    );
-    console.log(orden);
-    // add new document with a generated id.
-    const docRef = await addDoc(collection(db, 'orders'), orden);
-    // actualizamos el stock
-    cart.forEach(async (productoEnCart) => {
-      // accedemos a la referencia del producto
-      const productRef = doc(db, 'products', productoEnCart.id);
-      // llamamos al snapshot, llamadno a firebase
-      const productSnap = await getDoc(productRef);
-      // snapshot nos regresa la info del documento
-      await updateDoc(productRef, {
-        stock: productSnap.data().stock - productoEnCart.quantity,
+    if (isCompleted === true) {
+      setLoading(true);
+      const montoTotal = totalPrice();
+      const orden = generarOrden(
+        'antonio',
+        'delhierroantonio@icloud.com',
+        cart,
+        montoTotal
+      );
+      const docRef = await addDoc(collection(db, 'orders'), orden);
+      cart.forEach(async (productoEnCart) => {
+        const productRef = doc(db, 'products', productoEnCart.id);
+        const productSnap = await getDoc(productRef);
+        await updateDoc(productRef, {
+          stock: productSnap.data().stock - productoEnCart.quantity,
+        });
       });
-    });
-    setLoading(false);
-    clearCart();
-    swal('Gracias por su compra! se genero la orden de compra con ID: ' + docRef.id);
+      setLoading(false);
+      clearCart();
+      swal('Gracias por su compra! se genero la orden de compra con ID: ' + docRef.id + ', se han enviado los detalles a su email: ' + email);
+    } 
   };
   if (cart.length === 0) {
     return (
@@ -82,17 +94,91 @@ const CartContainer = () => {
                 <td>qty: {product.quantity}</td>
                 <td>p/u: ${product.price}</td>
                 <td>Subtotal: ${product.price * product.quantity}</td>
-                <button onClick={() => removeItem(product)}>
+                <td className='btn' onClick={() => removeItem(product)}>
                   Eliminar produto
-                </button>
+                </td>
               </tr>
             </tbody>
           );
         })}
       </table>
       <p>total: $ {totalPrice()}</p>
-      <button onClick={() => clearCart(cart)}>Vaciar Carrito</button>
-      <button onClick={handleBuy}>Confirmar Compra</button>
+      <button className='btn' onClick={() => clearCart(cart)}>Vaciar Carrito</button>
+      <form onSubmit={handleSubmit}>
+            {mensaje.length ? (
+                <p
+                    style={{
+                        padding: '1rem 3rem',
+                        color: 'white',
+                        backgroundColor: 'crimson',
+                        textAlign: 'center',
+                    }}
+                >
+                    {mensaje}
+                </p>
+            ) : null}
+            <div className="mb-4">
+                <label className="text-gray-800" htmlFor="nombre">
+                    Nombre:
+                </label>
+                <input
+                    id="nombre"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="Nombre"
+                    name="nombre"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                />
+            </div>
+            <div className="mb-4">
+                <label className="text-gray-800" htmlFor="apellido">
+                    Apellido:
+                </label>
+                <input
+                    id="apellido"
+                    type="text"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="Apellido"
+                    name="apellido"
+                    value={apellido}
+                    onChange={(e) => setApellido(e.target.value)}
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="text-gray-800" htmlFor="email">
+                    E-mail:
+                </label>
+                <input
+                    id="email"
+                    type="email"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="Email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="text-gray-800" htmlFor="telefono">
+                    Teléfono:
+                </label>
+                <input
+                    id="telefono"
+                    type="tel"
+                    className="mt-2 block w-full p-3 bg-gray-50"
+                    placeholder="Telefono"
+                    name="telefono"
+                    value={telefono}
+                    onChange={(e) => setTelefono(e.target.value)}
+                />
+            </div>
+            <button className="btn-buy" type="submit">
+                Continuar con el pago
+            </button>
+        </form>
     </div>
   );
 };

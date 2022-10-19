@@ -10,3 +10,44 @@
 .cart-img {
 width: 4rem;
 }
+
+.btn {
+  color: white;
+  letter-spacing: .2rem;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  background-color: coral;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  border: none;
+  border-radius: .3rem;
+  margin: 1rem;
+}
+
+.btn:hover {
+  background-color: rgb(225, 91, 43);
+}
+
+.btn-buy {
+  color: white;
+  letter-spacing: .2rem;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  background-color: rgb(75, 130, 211);
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  border: none;
+  border-radius: .3rem;
+  margin: 1rem;
+}
+
+.btn-buy:hover {
+  padding: 1rem 2rem;
+  background-color: rgb(23, 112, 246);
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  border: none;
+  border-radius: .3rem;
+  margin: 1rem;
+}
+
