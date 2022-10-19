@@ -11,7 +11,7 @@
 - Sweet Alert para mostrar alertas personalizadas
 ---
 ## Demo
-### Se puede visualizar una **demo** del sitio web en el sig link: 
+### Se puede visualizar una **demo** del sitio web en el sig link: https://pc-ecommerce-react.vercel.app/ 
 ---
 ## Contacto
 - https://www.linkedin.com/in/delhierroantonio/
